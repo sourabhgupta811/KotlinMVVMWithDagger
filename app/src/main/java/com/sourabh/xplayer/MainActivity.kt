@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var movieRepository = MovieRepository(this)
+        val movieRepository = MovieRepository(this)
         CoroutineScope(Dispatchers.IO).launch {
             movieListLiveData = movieRepository.getMovies(6)
             launch(Dispatchers.Main) {
