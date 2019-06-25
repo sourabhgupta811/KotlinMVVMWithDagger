@@ -1,10 +1,10 @@
 package com.sourabh.xplayer
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-import com.sourabh.network.TMDBApiKeeper
-import com.sourabh.network.models.MoviesList
+import repository.network.TMDBApiKeeper
+import com.example.repository.network.models.MoviesList
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             var moviesList : MoviesList? = null
             try {
-                moviesList = TMDBApiKeeper.getMoviesList()
+                moviesList = repository.network.TMDBApiKeeper.getMoviesList()
             } catch (e: Exception) {
                 e.printStackTrace()
             }

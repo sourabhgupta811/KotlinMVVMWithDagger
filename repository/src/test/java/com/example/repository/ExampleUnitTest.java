@@ -1,4 +1,4 @@
-package com.sourabh.network;
+package com.example.repository;
 
 import org.junit.Test;
 
