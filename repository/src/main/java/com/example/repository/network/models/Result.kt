@@ -1,8 +1,13 @@
-package com.sourabh.network.models
+package com.example.repository.network.models
 
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+private const val tableName = "movie"
+
+@Entity(tableName = tableName)
 data class Result(
     @SerializedName("adult")
     val adult: Boolean,
@@ -32,4 +37,13 @@ data class Result(
     val voteAverage: Double,
     @SerializedName("vote_count")
     val voteCount: Int
-)
+){
+    @PrimaryKey(autoGenerate = true)
+    var roomId:Int = 0
+
+    companion object{
+        fun getTableName():String{
+            return tableName
+        }
+    }
+}

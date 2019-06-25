@@ -1,6 +1,6 @@
-package com.sourabh.network
+package com.example.repository.network.api
 
-import com.sourabh.network.models.MoviesList
+import com.example.repository.network.models.MoviesList
 
 object TMDBApiKeeper{
     val tMDBApi = TMDBApi()

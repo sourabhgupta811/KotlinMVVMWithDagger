@@ -1,10 +1,11 @@
-package com.sourabh.network
+package com.example.repository.network.api
 
-import com.sourabh.network.constants.NetworkConstants
-import com.sourabh.network.models.MoviesList
+import android.util.Log
+import com.example.repository.network.constants.NetworkConstants
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import com.example.repository.network.models.MoviesList
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -19,9 +20,10 @@ interface TMDBApi{
 
 
     companion object{
-        operator fun invoke(): TMDBApi{
+        operator fun invoke(): TMDBApi {
             val interceptor = Interceptor { chain->
-                val requestUrl = chain.request().url().newBuilder().addQueryParameter("api_key",NetworkConstants.TMDB_API_KEY).build()
+                val requestUrl = chain.request().url().newBuilder().addQueryParameter("api_key",
+                    NetworkConstants.TMDB_API_KEY).build()
                 val request  = Request.Builder().url(requestUrl).build()
                 val response = chain.proceed(request)
                 return@Interceptor response
