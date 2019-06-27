@@ -18,11 +18,7 @@ class MovieRepository(context: Context) {
     private val tmdbDatabase: TMDBDatabase = DatabaseKeeper.getDatabase(context).also {
         movieListDao  = it.movieListDao()
     }
-    private val applicationContext = context.applicationContext
     private val tmdbApiKeeper: TMDBApiKeeper = TMDBApiKeeper
-//    private val _movieListLiveData : MutableLiveData<List<MoviesList>> = MutableLiveData()
-//    val movieListLiveData: LiveData<List<MoviesList>>
-//    get() = _movieListLiveData
 
     suspend fun getMovies(page:Int): LiveData<List<MoviesList>>{
         return withContext(Dispatchers.IO) {
